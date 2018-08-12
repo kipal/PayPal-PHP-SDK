@@ -104,7 +104,7 @@ class MerchantPreferences extends PayPalModel
      */
     public function setReturnUrl($return_url)
     {
-        if (empty($notify_url)) {
+        if (empty($return_url)) {
 
             return $this;
         }
