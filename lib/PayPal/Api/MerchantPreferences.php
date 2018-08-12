@@ -104,6 +104,11 @@ class MerchantPreferences extends PayPalModel
      */
     public function setReturnUrl($return_url)
     {
+        if (empty($notify_url)) {
+
+            return $this;
+        }
+        
         UrlValidator::validate($return_url, "ReturnUrl");
         $this->return_url = $return_url;
         return $this;
