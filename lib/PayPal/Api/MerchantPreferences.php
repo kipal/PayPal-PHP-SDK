@@ -80,6 +80,11 @@ class MerchantPreferences extends PayPalModel
      */
     public function setCancelUrl($cancel_url)
     {
+        if (empty($cancel_url)) {
+
+            return $this;
+        }
+        
         UrlValidator::validate($cancel_url, "CancelUrl");
         $this->cancel_url = $cancel_url;
         return $this;
