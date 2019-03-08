@@ -211,13 +211,13 @@ class PayPalHttpConnection
             );
             $ex->setData($result);
             $msg = "Got Http response code $httpStatus when accessing {$this->httpConfig->getUrl()}. " . $result;
-            
-            if (400 <= $httpStatus || 499 >= $httpStatus) {
+
+            if (400 <= $httpStatus && 499 >= $httpStatus) {
                 $this->logger->info($msg);
             } else {
                 $this->logger->error($msg);
             }
-            
+
             $this->logger->debug("\n\n" . str_repeat('=', 128) . "\n");
             throw $ex;
         }
